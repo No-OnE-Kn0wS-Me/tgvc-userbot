@@ -104,22 +104,6 @@ class MusicPlayer(object):
             else datetime.utcnow().replace(microsecond=0)
         )
 
-    async def pin_current_audio(self):
-        group_call = self.group_call
-        client = group_call.client
-        chat_id = int("-100" + str(group_call.full_chat.id))
-        try:
-            async for m in client.search_messages(chat_id,
-                                                  filter="pinned",
-                                                  limit=1):
-                if m.audio:
-                    await m.unpin()
-            await playlist[0].pin(True)
-        except ChatAdminRequired:
-            pass
-        except FloodWait:
-            pass
-
 
 mp = MusicPlayer()
 
