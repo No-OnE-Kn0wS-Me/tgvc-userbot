@@ -56,7 +56,7 @@ __starts with ! (exclamation mark)__
 
 USERBOT_REPO = f"""{emoji.ROBOT} **Telegram Voice Chat UserBot**
 
-- Repository: [GitHub](https://github.com/dashezup/tgvc-userbot)
+- Repository: [GitHub](https://github.com/No-OnE-Kn0wS-Me/tgvc-userbot)
 - License: AGPL-3.0-or-later"""
 
 
@@ -157,7 +157,6 @@ async def play_track(client, m: Message):
         await mp.update_start_time()
         await m_status.delete()
         print(f"- START PLAYING: {playlist[0].audio.title}")
-        await mp.pin_current_audio()
     await send_playlist()
     for track in playlist[:2]:
         await download_audio(track)
@@ -377,7 +376,6 @@ async def skip_current_playing():
     # remove old track from playlist
     old_track = playlist.pop(0)
     print(f"- START PLAYING: {playlist[0].audio.title}")
-    await mp.pin_current_audio()
     await send_playlist()
     os.remove(os.path.join(
         download_dir,
